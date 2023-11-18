@@ -1,0 +1,18 @@
+<form>
+  <label for="nome">Nome da Tarefa:</label>
+  <input type="text" id="nome" [(ngModel)]="novaTarefa.nome" name="nome"><br>
+
+  <label for="proprietario">Proprietário:</label>
+  <input type="text" id="proprietario" [(ngModel)]="novaTarefa.proprietario" name="proprietario"><br>
+
+  <label for="dataInicio">Data de Início:</label>
+  <input type="date" id="dataInicio" [(ngModel)]="novaTarefa.dataInicio" name="dataInicio"><br>
+
+  <label for="dataTermino">Data de Término:</label>
+  <input type="date" id="dataTermino" [(ngModel)]="novaTarefa.dataTermino" name="dataTermino"><br>
+
+  <label for="dataTermino">Cor da Tarefa:</label>
+  <input type="color" id="corDaTarefa" [(ngModel)]="novaTarefa.corDaTarefa" name="corDaTarefa"><br>
+
+  <input type="submit" id="button" value="Adicionar Tarefa">
+</form>

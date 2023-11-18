@@ -1,5 +1,33 @@
-<main class="main">
-  <h1>Este é o meu projeto</h1>
-</main>
+<div class="corpo">
+  <editor-de-tarefas></editor-de-tarefas>
+  <h1>Lista de Tarefas</h1>
+  <div class="tela">
+    <criador-de-tarefas></criador-de-tarefas>
+
+    <pesquisa-de-tarefas></pesquisa-de-tarefas>
+
+    <div class="tarefas">
+      <div class="tarefa">
+        <h2>{{tarefas[0].nome}}</h2>
+        <h2> Proprietário: {{tarefas[0].proprietario}} </h2>
+        <h2> Data início: {{tarefas[0].dataInicio}} </h2>
+        <h2> Data início: {{tarefas[0].dataTermino}} </h2>
+
+        <button class="tarefa_button">editar</button>
+        <button class="tarefa_button">excluir</button>
+      </div>
+
+      <div class="tarefa">
+        <h2>{{tarefas[1].nome}}</h2>
+        <h2> Proprietário: {{tarefas[1].proprietario}} </h2>
+        <h2> Data início: {{tarefas[1].dataInicio}} </h2>
+        <h2> Data início: {{tarefas[1].dataTermino}} </h2>
+
+        <button class="tarefa_button">editar</button>
+        <button class="tarefa_button">excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
