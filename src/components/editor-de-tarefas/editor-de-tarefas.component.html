@@ -1,18 +1,18 @@
-<div class="edicaoDeTarefa">
-  <form>
-    <label for="nomeEditado">Nome da Tarefa:</label>
-    <input type="text" id="nomeEditado" name="nomeEditado"><br>
+<form (submit)="editarTarefa()">
+  <label for="nome">Nome da Tarefa:</label>
+  <input type="text" id="nome" [(ngModel)]="tarefaEditada.nome" name="nome"><br>
 
-    <label for="proprietarioEditado">Proprietário:</label>
-    <input type="text" id="proprietarioEditado" name="proprietarioEditado"><br>
+  <label for="proprietario">Proprietário:</label>
+  <input type="text" id="proprietario" [(ngModel)]="tarefaEditada.proprietario" name="proprietario"><br>
 
-    <label for="dataInicioEditada">Data de Início:</label>
-    <input type="date" id="dataInicioEditada" name="dataInicioEditada"><br>
+  <label for="dataInicio">Data de Início:</label>
+  <input type="date" id="dataInicio" [(ngModel)]="tarefaEditada.dataInicio" name="dataInicio"><br>
 
-    <label for="dataTerminoEditada">Data de Término:</label>
-    <input type="date" id="dataTerminoEditada" name="dataTerminoEditada"><br>
+  <label for="dataTermino">Data de Término:</label>
+  <input type="date" id="dataTermino" [(ngModel)]="tarefaEditada.dataTermino" name="dataTermino"><br>
 
-    <input type="submit" id="buttonDeEdicao" value="Editar Tarefa">
-    <button>cancelar</button>
-  </form>
-</div>
+  <label for="dataTermino">Cor da Tarefa:</label>
+  <input type="color" id="corDaTarefa" [(ngModel)]="tarefaEditada.corDaTarefa" name="corDaTarefa"><br>
+
+  <input type="submit" id="button" value="Editar Tarefa">
+</form>

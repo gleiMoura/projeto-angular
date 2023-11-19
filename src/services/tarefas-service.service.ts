@@ -30,7 +30,7 @@ export class TarefasService {
   }
 
   //Cria um observable para pegar as tarefas com base no ID
-  obterTarefasPorId(id: string): Observable<any[]> {
+  obterTarefaPorId(id: string): Observable<any[]> {
     return this.httpClient.get<any>(`${this.apiUrl}/pegarTarefas/${id}`);
   }
 

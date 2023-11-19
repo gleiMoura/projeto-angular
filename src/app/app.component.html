@@ -1,5 +1,4 @@
 <div class="corpo">
-  <editor-de-tarefas></editor-de-tarefas>
   <h1>Lista de Tarefas</h1>
   <div class="tela">
     <criador-de-tarefas></criador-de-tarefas>
@@ -14,8 +13,15 @@
         <h2> Data início: {{ tarefa.dataInicio | date: 'dd/MM/yyyy' }} </h2>
         <h2> Data início: {{ tarefa.dataInicio | date: 'dd/MM/yyyy' }} </h2>
 
-        <button class="tarefa_button">editar</button>
+        <button class="tarefa_button" (click)="editarTarefa()">editar</button>
         <button class="tarefa_button" (click)="excluirTarefa(tarefa.id)">excluir</button>
+
+        <div *ngIf="componenteVisivel" class="edicaoDeTarefa">
+          <editor-de-tarefas [tarefa]="tarefa">
+          </editor-de-tarefas>
+          <button (click)="cancelarEdicao()" class="tarefa_button posicao_botao">Fechar guia de edição</button>
+        </div>
+
       </div>
     </div>
   </div>

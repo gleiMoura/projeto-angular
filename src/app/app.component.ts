@@ -72,6 +72,16 @@ export class AppComponent implements OnInit {
     }
     )
   }
+
+  componenteVisivel = false;
+
+  editarTarefa() {
+    this.componenteVisivel = true;
+  }
+
+  cancelarEdicao() {
+    this.componenteVisivel = false;
+  }
 }
 
 //Podemos exemplificar o uso de DATA BINDING usando o objeto tarefa no componente app. Lá criamos um card colocando
