@@ -1,6 +1,7 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { AtualizacaoService } from './atualizacao-service.service';
 
 export interface TarefaType {
   id: string,
@@ -17,7 +18,11 @@ export interface TarefaType {
 export class TarefasService {
   apiUrl = 'http://localhost:5000';
 
-  constructor(private httpClient: HttpClient) { };
+  constructor(
+    private httpClient: HttpClient,
+    private atualizacaoService: AtualizacaoService
+  ) { };
+
 
   //cria um observable para pegar as tarefas existentes da API
   obterTarefas(): Observable<any[]> {
@@ -36,14 +41,22 @@ export class TarefasService {
 
   //envia a tarefa para a API
   criarTarefa(novaTarefa: TarefaType): Observable<any[]> {
-    return this.httpClient.post<any>(this.apiUrl + "/criarTarefa", novaTarefa);
+    return this.httpClient.post<any>(this.apiUrl + "/criarTarefa", novaTarefa)
+      .pipe(
+        tap(() => this.atualizacaoService.notificarAtualizacao())
+      )
   }
 
   editarTarefa(id: string, tarefa: TarefaType): Observable<any[]> {
-    return this.httpClient.put<any>(`${this.apiUrl}/editarTarefa/${id}`, tarefa);
+    return this.httpClient.put<any>(`${this.apiUrl}/editarTarefa/${id}`, tarefa)
+      .pipe(
+        tap(() => this.atualizacaoService.notificarAtualizacao())
+      )
   }
 
-  excluirTarefa(id: string): Observable<any[]> {
+  excluirTarefa(id: string): Observable<any> {
+    this.atualizacaoService.notificarAtualizacao();
+
     return this.httpClient.delete<any>(`${this.apiUrl}/deletarTarefa/${id}`);
   }
 }

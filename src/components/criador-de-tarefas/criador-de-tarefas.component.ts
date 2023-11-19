@@ -12,13 +12,8 @@ import { TarefaType } from '../../services/tarefas-service.service';
   templateUrl: './criador-de-tarefas.component.html'
 })
 export class CriadorDeTarefasComponent {
-  generateUniqueID(): string { //cria um id único para o componente
-    const timestamp = new Date().getTime();
-    return `${timestamp}`;
-  }
-
   novaTarefa: TarefaType = {
-    id: this.generateUniqueID(),
+    id: '',
     nome: '',
     proprietario: '',
     dataInicio: '',
@@ -31,7 +26,7 @@ export class CriadorDeTarefasComponent {
   ) { }
 
   criarTarefa() {
-    this.tarefasService.criarTarefa(this.novaTarefa).subscribe(
+    this.tarefasService.criarTarefa({ ...this.novaTarefa, id: `${new Date().getTime()}` }).subscribe(
       (resposta) => {
         alert('Tarefa Criada com Sucesso!');
         console.log(resposta);
