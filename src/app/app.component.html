@@ -6,8 +6,8 @@
 
     <pesquisa-de-tarefas></pesquisa-de-tarefas>
 
-    <div class="tarefas">
-      <div class="tarefa">
+    <div class="tarefas" >
+      <div class="tarefa" [ngStyle]="{'background-color': tarefas[0].corDaTarefa}">
         <h2>{{tarefas[0].nome}}</h2>
         <h2> Proprietário: {{tarefas[0].proprietario}} </h2>
         <h2> Data início: {{tarefas[0].dataInicio}} </h2>
@@ -17,7 +17,7 @@
         <button class="tarefa_button">excluir</button>
       </div>
 
-      <div class="tarefa">
+      <div class="tarefa" [ngStyle]="{'background-color': tarefas[1].corDaTarefa}">
         <h2>{{tarefas[1].nome}}</h2>
         <h2> Proprietário: {{tarefas[1].proprietario}} </h2>
         <h2> Data início: {{tarefas[1].dataInicio}} </h2>
