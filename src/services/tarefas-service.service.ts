@@ -2,11 +2,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-interface TarefaType {
+export interface TarefaType {
+  id: string,
   nome: string,
   proprietario: string,
   dataInicio: string,
-  dataTermino: string
+  dataTermino: string,
+  corDaTarefa: string
 }
 
 @Injectable({
@@ -23,7 +25,7 @@ export class TarefasService {
   }
 
   //Cria um observable para pegar as tarefas com base no ID
-  obterTarefasPorId(id: number): Observable<any[]> {
+  obterTarefasPorId(id: string): Observable<any[]> {
     return this.httpClient.get<any>(`${this.apiUrl}/pegarTarefas/${id}`);
   }
 
@@ -37,7 +39,11 @@ export class TarefasService {
     return this.httpClient.post<any>(this.apiUrl + "/criarTarefa", novaTarefa);
   }
 
-  editarTarefa(id: number, tarefa: TarefaType): Observable<any[]> {
+  editarTarefa(id: string, tarefa: TarefaType): Observable<any[]> {
     return this.httpClient.put<any>(`${this.apiUrl}/editarTarefa/${id}`, tarefa);
+  }
+
+  excluirTarefa(id: string): Observable<any[]> {
+    return this.httpClient.delete<any>(`${this.apiUrl}/deletarTarefa/${id}`);
   }
 }

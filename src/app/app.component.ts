@@ -23,26 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  tarefa = {
-    id: 1,
-    nome: "Estudar para a prova",
-    proprietario: "joão pessoa",
-    dataInicio: "2023-10-28",
-    dataTermino: "2023-11-19",
-    corDaTarefa: "#123123"
-  }
-
-  segundaTarefa = {
-    id: 2,
-    nome: "Fazer musculação",
-    proprietario: "joão pessoa",
-    dataInicio: "2023-10-28",
-    dataTermino: "2023-11-19",
-    corDaTarefa: "#222333"
-  }
-
-  tarefas = [this.tarefa, this.segundaTarefa];
-
   //Criamos esse constructor e o código abaixo para pegar os dados da API por meio do SERVICE que o ANGULAR
   //disponibiliza para nós em sua biblioteca. O Injectable nos permite dizer para o ANGULAR que se trata de um
   //SERVIÇO e que injetaremos dados nele.
@@ -61,6 +41,16 @@ export class AppComponent implements OnInit {
       this.tarefasDaAPI = data;
       console.log(this.tarefasDaAPI)
     })
+  }
+
+  excluirTarefa(id: string) {
+    this.tarefasService.excluirTarefa(id).subscribe(resposta => {
+      console.log(resposta);
+    }, (erro) => {
+      console.error(erro);
+      alert('Não foi possível excluir a tarefa no momento')
+    }
+    )
   }
 }
 

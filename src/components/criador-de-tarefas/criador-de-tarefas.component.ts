@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TarefasService } from '../../services/tarefas-service.service';
+import { TarefaType } from '../../services/tarefas-service.service';
 
 @Component({
   selector: 'criador-de-tarefas',
@@ -11,7 +12,13 @@ import { TarefasService } from '../../services/tarefas-service.service';
   templateUrl: './criador-de-tarefas.component.html'
 })
 export class CriadorDeTarefasComponent {
-  novaTarefa = {
+  generateUniqueID(): string { //cria um id único para o componente
+    const timestamp = new Date().getTime();
+    return `${timestamp}`;
+  }
+
+  novaTarefa: TarefaType = {
+    id: this.generateUniqueID(),
     nome: '',
     proprietario: '',
     dataInicio: '',
@@ -23,7 +30,6 @@ export class CriadorDeTarefasComponent {
     public tarefasService: TarefasService
   ) { }
 
-
   criarTarefa() {
     this.tarefasService.criarTarefa(this.novaTarefa).subscribe(
       (resposta) => {
@@ -32,6 +38,7 @@ export class CriadorDeTarefasComponent {
 
         //limpa os dados da novaTarefa, que recebe eles dos imputs
         this.novaTarefa = {
+          id: '',
           nome: '',
           proprietario: '',
           dataInicio: '',
