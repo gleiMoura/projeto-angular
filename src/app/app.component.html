@@ -6,7 +6,7 @@
 
     <pesquisa-de-tarefas></pesquisa-de-tarefas>
 
-    <div class="tarefas" >
+    <div class="tarefas">
       <div class="tarefa" [ngStyle]="{'background-color': tarefas[0].corDaTarefa}">
         <h2>{{tarefas[0].nome}}</h2>
         <h2> Proprietário: {{tarefas[0].proprietario}} </h2>
@@ -26,8 +26,22 @@
         <button class="tarefa_button">editar</button>
         <button class="tarefa_button">excluir</button>
       </div>
+
+      <!--Perceba que apenas usamos um for para iterar sobre as tarefas com a diretiva ngFor-->
+      <div *ngFor="let tarefa of tarefasDaAPI" class="tarefa" [ngStyle]="{'background-color': tarefa.corDaTarefa}">
+        <h2>{{tarefa.nome}}</h2>
+        <h2> Proprietário: {{tarefa.proprietario}} </h2>
+        <h2> Data início: {{tarefa.dataInicio}} </h2>
+        <h2> Data início: {{tarefa.dataTermino}} </h2>
+
+        <button class="tarefa_button">editar</button>
+        <button class="tarefa_button">excluir</button>
+      </div>
     </div>
   </div>
 </div>
 
 <router-outlet></router-outlet>
+
+<!--Podemos usar a diretiva NGFOR para criar um lista de tarefas dentro da <div class="tarefas></div>,
+  Assim poderemos colocar essas tarefas de forma dinâmica"-->

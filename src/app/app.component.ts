@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
   //Criamos esse constructor e o código abaixo para pegar os dados da API por meio do SERVICE que o ANGULAR
   //disponibiliza para nós em sua biblioteca. O Injectable nos permite dizer para o ANGULAR que se trata de um
   //SERVIÇO e que injetaremos dados nele.
-  tarefasDaAPi: any;
+  tarefasDaAPI: any;
 
   constructor(
     public tarefasService: TarefasService
@@ -58,8 +58,8 @@ export class AppComponent implements OnInit {
 
   obterTarefasDaAPI() {
     this.tarefasService.obterTarefas().subscribe(data => {
-      this.tarefasDaAPi = data;
-      console.log(this.tarefasDaAPi)
+      this.tarefasDaAPI = data;
+      console.log(this.tarefasDaAPI)
     })
   }
 }
