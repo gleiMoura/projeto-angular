@@ -8,6 +8,7 @@ import { TarefasService } from '../services/tarefas-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { AtualizacaoService } from '../services/atualizacao-service.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -20,9 +21,8 @@ import { AtualizacaoService } from '../services/atualizacao-service.service';
     CriadorDeTarefasComponent,
     PesquisaDeTarefasComponent
   ],
-  providers: [TarefasService, AtualizacaoService],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  providers: [TarefasService, AtualizacaoService, DatePipe],
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   //Criamos esse constructor e o código abaixo para pegar os dados da API por meio do SERVICE que o ANGULAR
@@ -34,7 +34,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     public tarefasService: TarefasService,
-    private atulizacaoService: AtualizacaoService
+    private atulizacaoService: AtualizacaoService,
+    private datePipe: DatePipe
   ) {
     this.subscription = this.atulizacaoService.atualizacao$.subscribe(() => {
       this.atualizarComponente()

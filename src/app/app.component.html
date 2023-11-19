@@ -11,8 +11,8 @@
       <div *ngFor="let tarefa of tarefasDaAPI" class="tarefa" [ngStyle]="{'background-color': tarefa.corDaTarefa}">
         <h2>{{tarefa.nome}}</h2>
         <h2> Proprietário: {{tarefa.proprietario}} </h2>
-        <h2> Data início: {{tarefa.dataInicio}} </h2>
-        <h2> Data início: {{tarefa.dataTermino}} </h2>
+        <h2> Data início: {{ tarefa.dataInicio | date: 'dd/MM/yyyy' }} </h2>
+        <h2> Data início: {{ tarefa.dataInicio | date: 'dd/MM/yyyy' }} </h2>
 
         <button class="tarefa_button">editar</button>
         <button class="tarefa_button" (click)="excluirTarefa(tarefa.id)">excluir</button>
@@ -25,3 +25,5 @@
 
 <!--Podemos usar a diretiva NGFOR para criar um lista de tarefas dentro da <div class="tarefas></div>,
   Assim poderemos colocar essas tarefas de forma dinâmica"-->
+
+<!--Perceba que estamos usando um PIPE de data para mudar o formato da data-->
